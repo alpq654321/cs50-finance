@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Free
+{% endblock %}
+
+{% block main %}
+	<div style="font-size:40px">Watch this vedio, get free dollars! </div> <br> <br>
+	 <video id="media" src="static/ad.mp4" controls width="480px" heigt="360px"></video>  
+	<script>
+	var t = 1
+    var md=document.getElementsByTagName("video")[0];
+    md.addEventListener("ended",function(){
+         if (t===1) 
+		 {
+			alert("You got one free dollar! Try to watch it again!"); 
+			$.ajax({  
+							type:"POST",  
+							url:"/add",
+							success:function(data){}
+			})
+		}else 
+			alert("I am just kidding!");
+		 t += 1;
+    })
+	</script>
+{% endblock %}
